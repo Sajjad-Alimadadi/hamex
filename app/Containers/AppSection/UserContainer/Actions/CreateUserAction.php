@@ -9,6 +9,7 @@ use Exception;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\ValidationException;
 
 class CreateUserAction extends ParentAction
 {
@@ -34,10 +35,16 @@ class CreateUserAction extends ParentAction
                 $data['type'] = $data['typeperson'];
                 unset($data['typeperson']);
             } else {
+
+                if( $data['branch'] === null ){
+                    throw  ValidationException::withMessages(['user' => 'درصورتی که بازدید کننده تور دانشگاهی هستید ، اطلاعات مربوط به دانشگاه خود را وارد کنید']);
+                }
+
                 $data['mobile'] = session('otp-mobile');
                 $data['type'] = $data['typeperson'];
                 unset($data['typeperson']);
             }
+
             session::put('user', $data['mobile']);
             return $this->repository->create($data);
         } catch (Exception $e) {

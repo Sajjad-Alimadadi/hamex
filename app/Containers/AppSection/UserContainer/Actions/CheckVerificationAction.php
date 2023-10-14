@@ -21,7 +21,7 @@ class CheckVerificationAction extends ParentAction
      * @return mixed
      * @throws NotFoundException
      */
-    public function run($data): mixed
+    public function run($data)
     {
         try {
             return $this->repository->CheckOTP($data);

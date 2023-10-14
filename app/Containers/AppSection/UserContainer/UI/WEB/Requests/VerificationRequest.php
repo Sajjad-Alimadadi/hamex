@@ -35,7 +35,7 @@ class VerificationRequest extends ParentRequest
     public function rules(): array
     {
         return [
-            'mobile' => 'required',
+            'mobile' => 'required|regex:/(09)[0-9]{9}/|min:11|max:11',
         ];
     }
 

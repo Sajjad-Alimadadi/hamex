@@ -16,7 +16,7 @@ class UserRepository extends ParentRepository
         return Http::get("https://raygansms.com/AutoSendCode.ashx?Username=alimadadi&Password=@Sajjad1376&Mobile=" . $data['mobile'] . "&Footer=homex");
     }
 
-    public function CheckOTP($data): mixed
+    public function CheckOTP($data)
     {
         $response = Http::asForm()->post('https://raygansms.com/CheckSendCode.ashx', [
             'Username' => 'alimadadi',
@@ -27,14 +27,16 @@ class UserRepository extends ParentRepository
 
         if ($response->json() === true) {
 
-            session::put('otp-check', $data['mobile']);
-            if ( User::query()->where(['mobile' => $data['mobile']])->first()) {
-                dd('yes');
-//                return view('appSection@indexContainer::Index');
+            session::put('otp-check', session('otp-mobile'));
+
+            if ( User::query()->where(['mobile' => session('otp-mobile')])->first() ) {
+                session::put('user',session('otp-mobile'));
+                return false;
             }
+            return $response->json();
         }
 
-        return $response->json();
+
     }
 
 }

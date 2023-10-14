@@ -35,7 +35,7 @@ class GetMobileRequest extends ParentRequest
     public function rules(): array
     {
         return [
-//             'mobile' => 'required|integer|exists:users,mobile|min:11,max:11',
+//             'id' => '',
         ];
     }
 

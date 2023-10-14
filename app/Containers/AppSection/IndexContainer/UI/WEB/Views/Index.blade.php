@@ -8,7 +8,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#000000">
-    <title>هامکس</title>
+    <title>HAMEX</title>
     <meta name="description" content="هامکس">
     <meta name="keywords" content="bootstrap 5, mobile template, cordova, phonegap, mobile, html"/>
     <link rel="icon" type="image/png" href="/assets/img/favicon.png" sizes="32x32">
@@ -28,7 +28,7 @@
 <!-- App Header -->
 <div class="appHeader bg-primary text-light">
     <div class="pageTitle">
-        جشنواره هامکس
+        HAMEX
     </div>
     <div class="right">
         <a href="/logout" class="headerButton">
@@ -84,13 +84,16 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
 
                     <div class="form-group searchbox mt-1">
-                        <input name="search" type="text" class="form-control" placeholder="جستجو" value="@php if(isset($result['forsearch'])){echo $result['forsearch'];} @endphp" required>
+                        <input name="search" type="text" class="form-control" placeholder="جستجو"
+                               value="@php if(isset($result['forsearch'])){echo $result['forsearch'];} @endphp"
+                               required>
                         <i class="input-icon">
                             <ion-icon type="submit" name="search-outline"></ion-icon>
                         </i>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-outline-primary shadowed me-1 mb-1 mt-1">جستجوی هوشمند</button>
+                        <button type="submit" class="btn btn-outline-primary shadowed me-1 mb-1 mt-1">جستجوی هوشمند
+                        </button>
                     </div>
                 </form>
             </div>
@@ -106,7 +109,7 @@
             @if (isset($result['search']))
                 @foreach($result['search'] as $item)
                     <li>
-                        <a href="#">
+                        <a href="/detail/{{$item['id']}}">
                             <div>
                                 <h4 class="mb-05">{{$item['name']}}</h4>
                                 <div class="text-muted">
@@ -126,7 +129,7 @@
     <!-- app footer -->
     <div class="appFooter">
         <div class="footer-title">
-            کپی رایت © Mobilekit <span class="yearNow"></span>. تمامی حقوق محفوظ است.
+            {{--            کپی رایت © Mobilekit <span class="yearNow"></span>. تمامی حقوق محفوظ است.--}}
         </div>
 
 
@@ -218,7 +221,7 @@
         <div class="notification-header">
             <div class="in">
                 <img src="assets/img/icon/72x72.png" alt="image" class="imaged w24">
-                <strong>هامکس</strong>
+                <strong>HAMEX</strong>
                 <span>همین الان</span>
             </div>
             <a href="#" class="close-button">
@@ -229,7 +232,7 @@
             <div class="in">
                 <h3 class="subtitle">سلام بازدید کننده گرامی</h3>
                 <div class="text">
-                    بازدید کننده گرامی به جشنواره هامکس خوش آمدید ، امیدواریم لحظات خوبی را سپری کنید
+                    بازدید کننده گرامی به نمایشگاه هامکس خوش آمدید ، امیدواریم لحظات خوبی را سپری کنید
                 </div>
             </div>
         </div>

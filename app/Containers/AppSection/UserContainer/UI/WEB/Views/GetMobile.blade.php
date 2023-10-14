@@ -8,7 +8,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#000000">
-    <title>موبایل کیت - کیت رابط کاربری موبایل</title>
+    <title>HAMEX</title>
     <meta name="description" content="موبایل کیت - کیت رابط کاربری موبایل">
     <meta name="keywords" content="bootstrap 5, mobile template, cordova, phonegap, mobile, html"/>
     <link rel="icon" type="image/png" href="/assets/img/favicon.png" sizes="32x32">
@@ -34,11 +34,11 @@
             <img src="/assets/img/sample/photo/vector4.png" alt="image" class="form-image">
         </div>
         <div class="section mt-1">
-            <h1>HOMEX</h1>
+            <h1>HAMEX</h1>
             <h4>لطفا شماره موبایل خود را وارد کنید</h4>
         </div>
         <div class="section mt-1 mb-5">
-            <form action="/verification" method="post">
+            <form action="/verification" method="post" autocomplete="off">
                 @csrf
                 <!-- Equivalent to... -->
                 <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
@@ -54,6 +54,17 @@
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block btn-lg">ارسال کد تایید پیامکی</button>
                 </div>
+
+
+                @if ($errors->any())
+                    <div class="alert alert-outline-danger mt-2">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
             </form>
         </div>
